@@ -64,11 +64,6 @@ $('div, .x-icon').click(function(e) {
             lastSelected.style.display = "none"
             $('.bg-overlay').removeClass('open')
         },250)
-        if(scene.activeCamera == walkerCam){
-            //lockdownpointer
-            canvas.requestPointerLock()
-            document.getElementById("renderCanvas").focus();
-        }
     }
 });
 

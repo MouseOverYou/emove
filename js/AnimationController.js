@@ -82,8 +82,8 @@ function BufferStartAnimation(){
     startTween.to(camera, { alpha: -90 * (Math.PI / 180), beta: 90 * (Math.PI / 180), duration: 3, ease: "power4.inOut" }, "<");
 
     startTween.fromTo(node4decke.position, {y: -24}, {y: 0, duration: 1, ease: "easeOutExpo"},">-1" )
-    startTween.fromTo(node3bau.position, {y: -17}, {y: 0, duration: 1, ease: "easeOutExpo"},"<0.3" )
-    startTween.fromTo(node2power.position, {y: -10}, {y: 0, duration: 1, ease: "easeOutExpo"},"<0.3" )
+    startTween.fromTo(node3bau.position, {y: -17}, {y: 0, duration: 1, ease: "easeOutExpo"},"<0.2" )
+    startTween.fromTo(node2power.position, {y: -10}, {y: 0, duration: 1, ease: "easeOutExpo"},"<0.2" )
     
     startTween.pause();
 

@@ -26,63 +26,6 @@ function close_video() {
 };
 
 
-$(document).keyup(function (e) {
-  if (e.keyCode === 27) { close_video(); }
-
-  //R PRESSED
-  else if (e.keyCode === 82) {
-    console.log("r Keyboard")
-    //startTween.restart()
-    startTween.restart();
-  }
-  else if (e.keyCode == 51){
-    buttonTween.play();
-  }
-  else if (e.keyCode == 52){
-    buttonTween.reverse();
-  }
-  //1 PPRESSED -> walkercam
-  else if (e.keyCode == 49) {
-    document.getElementById("debugLabel").innerHTML = "Current Camera: First Person";
-    scene.activeCamera = walkerCam
-    HandleViewProperties()
-    //button stuff
-    b_All.setEnabled(true)
-    b_stand.visibility = true;
-    b_press.visibility = true;
-    b_stehle.visibility = true;
-    b_winkel.setEnabled(true);
-
-  }
-
-  //2 PPRESSED -> rotate camera
-  else if (e.keyCode == 50) {
-    if(document.getElementsByClassName('bg-overlay')[0].className == 'bg-overlay open'){
-      console.log("bg is open")
-    }
-    else{
-      console.log('bg is close')
-      document.getElementById("debugLabel").innerHTML = "Current Camera: Rotate Camera";
-      scene.activeCamera = camera;
-      HandleViewProperties()
-      //button stuff
-  
-      b_All.setEnabled(false)
-      b_stand.visibility = false;
-      b_press.visibility = false;
-      b_stehle.visibility = false;
-      b_winkel.setEnabled(false);
-    }
-
-  }
-
-  // SPACE PRESSED -> 
-  else if (e.keyCode == 32) {
-    console.log("jump")
-    jump(0.035)
-  }
-
-});
 
 //UI controllers
 //Back button

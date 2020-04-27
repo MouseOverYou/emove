@@ -22,7 +22,8 @@ function ChangeMaterialProperties() {
     //scene.getMaterialByName("gehause").useRoughnessFromMetallicTextureGreen = true
 
     scene.getMaterialByName("divisions").metallic = .8
-    scene.getMaterialByName("divisions").roughness = 0.12
+    scene.getMaterialByName("divisions").roughness = 0.05
+    scene.getMaterialByName("divisions").emissiveColor = new BABYLON.Color3.FromHexString("#127876")
 
     scene.getMaterialByName("chip").metallic = .4
     scene.getMaterialByName("chip").roughness = 0

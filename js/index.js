@@ -46,17 +46,8 @@ var createScene = function () {
 
     // On click event, request pointer lock
     scene.onPointerDown = function (evt) {
-        var pickInfo = scene.pick(scene.pointerX, scene.pointerY, function (mesh) { return (BABYLON.Tags.MatchesQuery(mesh, "arrow_coll") || BABYLON.Tags.MatchesQuery(mesh, "hs_coll")) && mesh.isPickable; });
-        if (pickInfo && pickInfo.pickedMesh && BABYLON.Tags.MatchesQuery(pickInfo.pickedMesh, "arrow_coll")) {
-            console.log(pickInfo.pickedMesh.name);
-            CurrentSelection = pickInfo.pickedMesh.name.split('Arrow Collider ')[1];
-            console.log(CurrentSelection)
-            TravelRotateCamTo(CurrentSelection);//send corresponding infobox to travel to
-            show_backbutton();
-            RevealInfopoints(true, parseInt(CurrentSelection) - 1)
-            //after time show all info buttons
-        }
-        else if (pickInfo && pickInfo.pickedMesh && BABYLON.Tags.MatchesQuery(pickInfo.pickedMesh, "hs_coll")) {
+        var pickInfo = scene.pick(scene.pointerX, scene.pointerY, function (mesh) { return (BABYLON.Tags.MatchesQuery(mesh, "hs_coll")) && mesh.isPickable; });
+        if (pickInfo && pickInfo.pickedMesh && BABYLON.Tags.MatchesQuery(pickInfo.pickedMesh, "hs_coll")) {
             console.log(pickInfo.pickedMesh.name);
             CurrentSelection = pickInfo.pickedMesh.name.split('hs Collider ')[1];
             openInfoUI(CurrentSelection)
