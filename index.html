@@ -26,7 +26,7 @@
 
 <body>
     <div id="fpsLabel"></div>
-    <div id="debugLabel">Key 1: First Person, Key 2: Rotate Camera</div>
+    <div id="debugLabel">current FPS:</div>
 
     <div id="video-overlay" class="video-overlay">
         <a class="video-overlay-close">&times;</a>
@@ -265,10 +265,13 @@
     </video-->
 
     <canvas id="renderCanvas" touch-action="none"></canvas> //touch-action="none" for best results from PEP
+
     <script type="text/javascript" src='js/AnimationController.js'></script>
+    <script type="text/javascript" src='js/ManipulateImported.js'></script>
     <script type="text/javascript" src='js/HelperFunctions.js'></script>
     <script type="text/javascript" src='js/MaterialManager.js'></script>
     <script type="text/javascript" src='js/MeshLoaderCtrl.js'></script>
+    <script type="text/javascript" src='js/GameManager.js'></script>
     <script type="text/javascript" src='js/PostEffects.js'></script>
     <script type="text/javascript" src='js/index.js'></script>
 

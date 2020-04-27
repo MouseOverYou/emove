@@ -27,32 +27,36 @@ var createScene = function () {
     camera.wheelPrecision = 100
     camera.attachControl(canvas, true, true, false);
 
-    lightLinks = new BABYLON.DirectionalLight("lightLinks", new BABYLON.Vector3(-60, -41, -90), scene);
+    lightLinks = new BABYLON.DirectionalLight("lightLinks", new BABYLON.Vector3(-60, -41, 90), scene);
     lightLinks.position = new BABYLON.Vector3(1, 1, 0);
     lightLinks.intensity = 2
 
-    lightRechts = new BABYLON.DirectionalLight("lightLinks", new BABYLON.Vector3(120, -41, -90), scene);
+    lightRechts = new BABYLON.DirectionalLight("lightLinks", new BABYLON.Vector3(120, -41, 90), scene);
     lightRechts.position = new BABYLON.Vector3(-1, 1, 0);
     lightRechts.intensity = 2
 
-    /*
-    // Sky material
-    var skyboxMaterial = new BABYLON.SkyMaterial("skyMaterial", scene);
-    skyboxMaterial.backFaceCulling = false;
-    skyboxMaterial.cameraOffset.x = 180;
-    skyboxMaterial.luminance = 0.05;
-    //skyboxMaterial._cachedDefines.FOG = true;
-
-    // Sky mesh (box)
-    var skybox = BABYLON.Mesh.CreateBox("skyBox", 1000.0, scene);
-    skybox.material = skyboxMaterial;
-    */
-
-    //var ssao = new BABYLON.SSAORenderingPipeline('ssaopipeline', scene, 0.75, camera);
+    scene.clearColor = BABYLON.Color3.White();
     PostEffects(scene);
+    //var floor = new BABYLON.MeshBuilder.CreateBox("floor", {height: 0.01, width: 25, depth: 25}, scene);
 
-    var count = 0;
-    scene.onPointerUp = function () {
+    // On click event, request pointer lock
+    scene.onPointerDown = function (evt) {
+        var pickInfo = scene.pick(scene.pointerX, scene.pointerY, function (mesh) { return (BABYLON.Tags.MatchesQuery(mesh, "arrow_coll") || BABYLON.Tags.MatchesQuery(mesh, "hs_coll")) && mesh.isPickable; });
+        if (pickInfo && pickInfo.pickedMesh && BABYLON.Tags.MatchesQuery(pickInfo.pickedMesh, "arrow_coll")) {
+            console.log(pickInfo.pickedMesh.name);
+            CurrentSelection = pickInfo.pickedMesh.name.split('Arrow Collider ')[1];
+            console.log(CurrentSelection)
+            TravelRotateCamTo(CurrentSelection);//send corresponding infobox to travel to
+            show_backbutton();
+            RevealInfopoints(true, parseInt(CurrentSelection) - 1)
+            //after time show all info buttons
+        }
+        else if (pickInfo && pickInfo.pickedMesh && BABYLON.Tags.MatchesQuery(pickInfo.pickedMesh, "hs_coll")) {
+            console.log(pickInfo.pickedMesh.name);
+            CurrentSelection = pickInfo.pickedMesh.name.split('hs Collider ')[1];
+            openInfoUI(CurrentSelection)
+            $('.x-icon').addClass('open');
+        }
 
 }
     return scene;

@@ -73,6 +73,9 @@ function LoadAssets(scene, assetsManager) {
 
     assetsManager.onFinish = function (task) {
         ChangeMaterialProperties()
+        CreateCustomMaterials()
+        SpawnHotspots()
+
     }
     //Asset Manager check
     assetsManager.onProgress = function (remainingCount, totalCount, lastFinishedTask) {
