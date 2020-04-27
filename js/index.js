@@ -26,7 +26,9 @@ var createScene = function () {
     camera.angularSensibilityy = 3000
     camera.wheelPrecision = 100
     camera.attachControl(canvas, true, true, false);
+    var light = new BABYLON.HemisphericLight("HemiLight", new BABYLON.Vector3(0, 0, -1), scene);
 
+    
     lightLinks = new BABYLON.DirectionalLight("lightLinks", new BABYLON.Vector3(-60, -41, 90), scene);
     lightLinks.position = new BABYLON.Vector3(1, 1, 0);
     lightLinks.intensity = 2
@@ -34,6 +36,7 @@ var createScene = function () {
     lightRechts = new BABYLON.DirectionalLight("lightLinks", new BABYLON.Vector3(120, -41, 90), scene);
     lightRechts.position = new BABYLON.Vector3(-1, 1, 0);
     lightRechts.intensity = 2
+    
 
     scene.clearColor = BABYLON.Color3.White();
     PostEffects(scene);

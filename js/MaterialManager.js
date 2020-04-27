@@ -5,9 +5,53 @@ function ChangeMaterialProperties() {
 
     var redBay =new BABYLON.Color3.FromHexString("#ea1e1e");
     var blueBay =new BABYLON.Color3.FromHexString("#063c9d");
-    var lightGrayBay = new BABYLON.Color3.FromHexString("#eeeeee");
+    var metalGray = new BABYLON.Color3.FromHexString("#323434");
     var darkGrayBay = new BABYLON.Color3.FromHexString("#323334");
     var blackBay = new BABYLON.Color3.FromHexString("#000000");
+
+    var metalAlbedo = new BABYLON.Texture("./assets/metal2/Metal012_2K_Color.jpg", scene, true, false)
+    var metalNormal = new BABYLON.Texture("./assets/metal2/Metal012_2K_Normal.jpg", scene, true, false)
+    var metalRoughness = new BABYLON.Texture("./assets/metal2/Metal012_2K_Roughness.jpg", scene, true, false)
+    scene.getMaterialByName("gehause").albedoTexture = ""
+    scene.getMaterialByName("gehause").bumpTexture = metalNormal
+    scene.getMaterialByName("gehause").metallicTexture = metalRoughness
+    scene.getMaterialByName("gehause").albedoColor = metalGray
+    scene.getMaterialByName("gehause").roughness = 0.25
+    scene.getMaterialByName("gehause").metallic = .75
+    //scene.getMaterialByName("gehause").useRoughnessFromMetallicTextureGreen = true
+
+    scene.getMaterialByName("divisions").metallic = .8
+    scene.getMaterialByName("divisions").roughness = 0.12
+
+    scene.getMaterialByName("chip").metallic = .4
+    scene.getMaterialByName("chip").roughness = 0
+
+    scene.getMaterialByName("Top verbinder").emissiveColor = new BABYLON.Color3.FromHexString("#6F6F6F");
+    scene.getMaterialByName("Top verbinder").metallic = 0
+
+    scene.getMaterialByName("Outside Metal 1").albedoTexture = ""
+    scene.getMaterialByName("Outside Metal 1").bumpTexture = metalNormal
+    scene.getMaterialByName("Outside Metal 1").metallicTexture = metalRoughness
+    scene.getMaterialByName("Outside Metal 1").albedoColor = metalGray
+    scene.getMaterialByName("Outside Metal 1").roughness = 0.25
+    scene.getMaterialByName("Outside Metal 1").metallic = 0.75
+
+    scene.getMaterialByName("Top Metal 1").albedoTexture = ""
+    scene.getMaterialByName("Top Metal 1").albedoColor = metalGray
+    scene.getMaterialByName("Top Metal 1").roughness = 0.25
+    scene.getMaterialByName("Top Metal 1").metallic = 0.75
+
+    scene.getMaterialByName("parts blau").roughness = 0.35
+    scene.getMaterialByName("parts blau").metallic = 1
+
+    scene.getMaterialByName("fusse").roughness = 0.35
+    scene.getMaterialByName("fusse").metallic = 1
+
+    scene.getMaterialByName("decke").albedoColor = new BABYLON.Color3.FromHexString("#292929");
+    scene.getMaterialByName("decke").roughness = 0.5
+    scene.getMaterialByName("decke").metallic = 0.25
+
+
 /*
     scene.getMaterialByName("logo_schwarz").metallic = 0.75
     scene.getMaterialByName("logo_schwarz").roughness = 0.1
