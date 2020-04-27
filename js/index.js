@@ -15,7 +15,8 @@ var createScene = function () {
 
     var assetsManager = new BABYLON.AssetsManager(scene)
     LoadAssets(scene, assetsManager)
-    camera = new BABYLON.ArcRotateCamera("Camera", 270 * (Math.PI / 180), 90 * (Math.PI / 180), 4, new BABYLON.Vector3(0, 0.5, 0), scene);
+    //camera = new BABYLON.ArcRotateCamera("Camera", 270 * (Math.PI / 180), 90 * (Math.PI / 180), 4, new BABYLON.Vector3(0, 0.5, 0), scene);
+    camera = new BABYLON.ArcRotateCamera("Camera", 0 * (Math.PI / 180), 0 * (Math.PI / 180), 1.5, new BABYLON.Vector3(0, 0.5, 0), scene);
     camera.minZ = 0.1
     camera.panningDistanceLimit = 0;
     camera.pinchToPanMaxDistance = 0;
@@ -27,15 +28,16 @@ var createScene = function () {
     camera.wheelPrecision = 100
     camera.attachControl(canvas, true, true, false);
     var light = new BABYLON.HemisphericLight("HemiLight", new BABYLON.Vector3(0, 0, -1), scene);
+    light.intensity = 2;
 
     
-    lightLinks = new BABYLON.DirectionalLight("lightLinks", new BABYLON.Vector3(-60, -41, 90), scene);
+    lightLinks = new BABYLON.DirectionalLight("lightLinks", new BABYLON.Vector3(200, -90, 180), scene);
     lightLinks.position = new BABYLON.Vector3(1, 1, 0);
-    lightLinks.intensity = 2
+    lightLinks.intensity = 1
 
-    lightRechts = new BABYLON.DirectionalLight("lightLinks", new BABYLON.Vector3(120, -41, 90), scene);
+    lightRechts = new BABYLON.DirectionalLight("lightRechts", new BABYLON.Vector3(-200, -90, 180), scene);
     lightRechts.position = new BABYLON.Vector3(-1, 1, 0);
-    lightRechts.intensity = 2
+    lightRechts.intensity = 1
     
 
     scene.clearColor = BABYLON.Color3.White();
@@ -79,6 +81,7 @@ function run() {
         scene.render();
         var fpsLabel = document.getElementById("fpsLabel");
         fpsLabel.innerHTML = engine.getFps().toFixed() + " fps";
+        TriggerLoopAnimations();
 
     });    
 }

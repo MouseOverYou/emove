@@ -4,16 +4,14 @@ var SceneStarted = false;
 function SetScene() {
 
     console.log("finish loading")
-    ChangeMaterialProperties();
-    CreateCustomMaterials();
-    ChangeMeshesMaterials();
-    AddGlow();
-    SpawnHotspots();
-    CreateRaycast(scene);//after colliders are added to hotspots
-    //CreateInfoBox();
-    SceneStarted = true;
+    ChangeMaterialProperties()
+    CreateCustomMaterials()
+    SpawnHotspots()
+    catchTransformNodes()
     BufferStartAnimation()
-    BufferButtonAnimation()
+    RevealInfopoints(false, null)
+    window.setTimeout(()=>{ startTween.restart()}, 2000)
+    window.setTimeout(RevealInfopoints, 4000, true, null)
 
 }
 var lastSelected = ""
@@ -26,34 +24,21 @@ function openInfoUI(selec){
     //handle infobox
     switch(selec){
         case "1":
-            document.getElementById("project-chatbot").style.display = "block";
-            lastSelected = document.getElementById("project-chatbot")
+            document.getElementById("project-varycon").style.display = "block";
+            lastSelected = document.getElementById("project-varycon")
             break;
         case "2":
             document.getElementById("project-ssi-schaefer").style.display = "block";
             lastSelected = document.getElementById("project-ssi-schaefer")
             break;
         case "3":
-            document.getElementById("project-ssi-schaefer").style.display = "block";
-            lastSelected = document.getElementById("project-ssi-schaefer");
+            document.getElementById("project-bombardier").style.display = "block";
+            lastSelected = document.getElementById("project-bombardier");
             break;
         case "4":
-            document.getElementById("project-varycon").style.display = "block";
-            lastSelected = document.getElementById("project-varycon")
-            break;
-        case "5":
             document.getElementById("project-bayer-ag").style.display = "block";
             lastSelected = document.getElementById("project-bayer-ag")
             break;
-        case "6":
-            document.getElementById("project-deutsche-telekom").style.display = "block";
-            lastSelected = document.getElementById("project-deutsche-telekom")
-            break;
-        case "7":
-            document.getElementById("project-bombardier").style.display = "block";
-            lastSelected = document.getElementById("project-bombardier")
-            break;
-            
     }
 
 }

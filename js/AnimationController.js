@@ -10,6 +10,13 @@ let pulseAnimRate = 1;
 let pulseAnimVector = new BABYLON.Vector3(1,1,1);
 
 
+function TriggerLoopAnimations() {
+    hsHolder.forEach(elem => {
+        elem.rotation.y += 0.005;
+    })
+
+}
+
 //rotate camera animations
 function TravelRotateCamTo(CurrentSelection) {
 
@@ -66,33 +73,19 @@ function TravelRotateCamBack(){
 }
 
 
-
 function BufferStartAnimation(){
-    RevealInfopoints(false);
-    scene.getTransformNodeByName("logo holder").setEnabled(false)
-    scene.getTransformNodeByName("Welcome").rotationQuaternion = null
-    scene.getTransformNodeByName("Welcome").scaling = new BABYLON.Vector3(0,0,0)
-    startTween.set(camera, {alpha: 0*(Math.PI/180), beta: 180*(Math.PI/180)});
-    startTween.from(camera, {radius:2.5, duration: 3})
-    startTween.fromTo(camera, { alpha: 0 * (Math.PI / 180), beta: 180 * (Math.PI / 180) }, { alpha: 90 * (Math.PI / 180), beta: 82 * (Math.PI / 180), duration: 2, ease: "power3.inOut" }, ">-2"); //1 second before end of last timeline
-
-    let offsetLogos = 2.5;
-    let rot = new BABYLON.Quaternion(0, 1.5, 0, 1)
-    for(var i = 0; i <= 6; i++){
-        let offString = offsetLogos.toString();
-        ArrowsHolder[i].rotationQuaternion = null // should allow to animate "rotation"
-        startTween.from(ArrowsHolder[i].scaling, {y:0, duration:2, ease: "elastic"}, offsetLogos);
-        startTween.from(ArrowsHolder[i].rotation, {y:  -180 * (Math.PI / 180), duration: 2, ease: "elastic"},"<" );
-        startTween.from(LogosHolder[i].scaling, {y:0, duration:2, ease: "elastic"}, "<0.1")
-        startTween.from(LogosHolder[i].position, {y:  LogosHolder[i].position.y-50, duration: 0.5, ease: "back"},"<" );
-;
-    offsetLogos += 0.1
-    }
+    console.log("hola")
+    startTween.set(camera, {radius: 1.5, alpha: 0 * (Math.PI / 180), beta: 0 * (Math.PI / 180)});
+    startTween.to(camera, {radius:4, duration:3}, "<")
     
-    startTween.fromTo(scene.getTransformNodeByName("Welcome").rotation, {x: 180 * (Math.PI / 180)}, {x:  90 * (Math.PI / 180), duration: 2, ease: "elastic"},">" );
-    startTween.set(scene.getTransformNodeByName("Welcome").scaling, {x: 0.528, y: 0.804, z: 0.804},"<" );
-    startTween.from(scene.getMeshByName("RB logo full Instance.1").scaling, {y: 0, duration: 0.5, ease: "back"},">0.5" );
+    startTween.from(Battery_P.rotation,{y: -360* (Math.PI / 180), duration:3, ease: "power4.inOut"}, "<")
+    startTween.to(camera, { alpha: -90 * (Math.PI / 180), beta: 90 * (Math.PI / 180), duration: 3, ease: "power4.inOut" }, "<");
 
+    startTween.fromTo(node4decke.position, {y: -24}, {y: 0, duration: 1, ease: "easeOutExpo"},">-1" )
+    startTween.fromTo(node3bau.position, {y: -17}, {y: 0, duration: 1, ease: "easeOutExpo"},"<0.3" )
+    startTween.fromTo(node2power.position, {y: -10}, {y: 0, duration: 1, ease: "easeOutExpo"},"<0.3" )
+    
+    startTween.pause();
 
 }
 

@@ -4,6 +4,7 @@ let LogosHolder = []
 let ArrowsHolder = []
 let overStation
 let b_All, b_stand, b_press, b_winkel, b_stehle, b_button;
+var node2power, node3bau, node4decke
 
 var ground
 
@@ -56,6 +57,22 @@ function SpawnHotspots(){
         }
     });
 
+}
+
+function catchTransformNodes(){
+    scene.transformNodes.forEach(elem=>{
+        if(elem.name == "2_power"){
+            node2power = elem;
+        }
+        else if(elem.name == "3_bauelemente"){
+            node3bau = elem;
+            console.log(elem)
+        }
+        else if(elem.name == "4_decke"){
+            node4decke = elem
+            console.log(elem)
+        }
+    })
 }
 
 function AllowMouseOverMesh(mesh){
