@@ -21,6 +21,22 @@ body {
   background: blanchedalmond
 }
 
+.back-stand {
+  position: absolute;
+  z-index: 1000;
+  bottom: 15px;
+  right: 20px;
+  font-size: 74px;
+  line-height: 1;
+  font-weight: 400;
+  color: #fff;
+  opacity:1;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+}
+
 .back-zoom {
   position: absolute;
   z-index: 1000;
@@ -242,7 +258,7 @@ right: -65%;
   }
 
   
-  .video-overlay-close:hover, .x-icon:hover, .back-zoom:hover{
+  .video-overlay-close:hover, .x-icon:hover, .back-zoom, .back-stand:hover{
     color: #fa183d;
   }
   
